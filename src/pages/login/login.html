@@ -1,18 +1,32 @@
-<!--
-  Generated template for the LoginPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>LOG IN</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate >
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="E-mail" [class.invalid]="!loginForm.controls.email.valid && blur" ></ion-input>
+      
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty">
+      <p>Wrong E-mail, please enter valid E-mail address</p>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Password" [class.invalid]="!loginForm.controls.password.valid && blur" ></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+      <p>Wrong Password. Password must be min. 6 chars</p>
+    </ion-item>
+    <button ipn-button block type="submit" [disabled]="!loginForm.valid">Log In</button>
+  </form>
+  <button ion-button block clear (click)="goToSignUp()">Create New Account</button>
+  <button ion-button block clear (click)="goToResetPassword()">Reset Password</button>
 </ion-content>

@@ -31,7 +31,9 @@ import { ProfileProvider } from '../providers/profile/profile';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     EventProvider,
-    ProfileProvider
+    ProfileProvider,
+    
+    
   ]
 })
 export class AppModule {}
